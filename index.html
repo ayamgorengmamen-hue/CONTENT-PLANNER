@@ -3,31 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Conten Planner</title>
+<title>Content Planner</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
-:root{--bg:#EDEFF6;--ink:#14171F;--muted:#667086;--glass:rgba(255,255,255,.6);--edge:rgba(255,255,255,.8);--line:rgba(20,23,31,.09);--fill:rgba(20,23,31,.05);--surface:#fff;--accent:#5B6CF2;--accent2:#9A7CF2;--on:#fff;--b1:#BFD0FF;--b2:#E2CCFF;--b3:#C4EBE0;--s0:#B8740A;--s1:#3A62D6;--s2:#12805E;--bad:#C8362B;--warn:#B8740A;--shadow:0 10px 34px rgba(40,50,100,.09);color-scheme:light dark;
+:root{--bg:#0B0D13;--ink:#EEF0F6;--muted:#A9B1C6;--glass:rgba(255,255,255,.08);--edge:rgba(255,255,255,.2);--line:rgba(255,255,255,.12);--fill:rgba(255,255,255,.07);--surface:#2A3045;--accent:#8392FF;--accent2:#B39CFF;--on:#0B0D13;--s0:#F2B650;--s1:#8FAAFF;--s2:#5ED6AA;--bad:#FF8A80;--warn:#F2B650;--shadow:none;color-scheme:dark;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D13;--ink:#EEF0F6;--muted:#9099AF;--glass:rgba(32,36,52,.55);--edge:rgba(255,255,255,.1);--line:rgba(255,255,255,.1);--fill:rgba(255,255,255,.06);--surface:#2A3045;--accent:#8392FF;--accent2:#B39CFF;--on:#0B0D13;--b1:#2A3A8C;--b2:#4A2A86;--b3:#14584B;--s0:#F2B650;--s1:#8FAAFF;--s2:#5ED6AA;--bad:#FF8A80;--warn:#F2B650;--shadow:0 10px 34px rgba(0,0,0,.35)}}
-:root[data-theme="dark"]{--bg:#0B0D13;--ink:#EEF0F6;--muted:#9099AF;--glass:rgba(32,36,52,.55);--edge:rgba(255,255,255,.1);--line:rgba(255,255,255,.1);--fill:rgba(255,255,255,.06);--surface:#2A3045;--accent:#8392FF;--accent2:#B39CFF;--on:#0B0D13;--b1:#2A3A8C;--b2:#4A2A86;--b3:#14584B;--s0:#F2B650;--s1:#8FAAFF;--s2:#5ED6AA;--bad:#FF8A80;--warn:#F2B650;--shadow:0 10px 34px rgba(0,0,0,.35)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:14.5px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.bg i{position:absolute;width:48vmax;height:48vmax;border-radius:50%;filter:blur(90px);opacity:.7;animation:dr 26s ease-in-out infinite alternate}
-.bg i:nth-child(1){left:-12vmax;top:-14vmax;background:var(--b1)}
-.bg i:nth-child(2){right:-14vmax;top:8vmax;background:var(--b2);animation-duration:34s;animation-delay:-8s}
-.bg i:nth-child(3){left:20vmax;bottom:-22vmax;background:var(--b3);animation-duration:40s;animation-delay:-16s}
-@keyframes dr{to{transform:translate3d(9vmax,7vmax,0) scale(1.18)}}
-@media (prefers-reduced-motion:reduce){.bg i{animation:none}}
+.bg{position:fixed;inset:0;z-index:-1;background:var(--bg) url(bg.jpg) center 40%/cover no-repeat}
+.bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.28)}
 .wrap{max-width:1500px;margin:0 auto;padding:24px 20px 40px}
 h1{font:700 36px/1.1 -apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,system-ui,sans-serif;letter-spacing:-.035em;margin:0;background:linear-gradient(90deg,var(--ink) 30%,var(--accent) 75%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content}
 .sub{color:var(--muted);margin:6px 0 0}
 .glass{background:var(--glass);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);border:1px solid var(--edge);border-radius:20px;box-shadow:var(--shadow)}
 button,select,input,textarea{font:inherit;color:inherit;letter-spacing:inherit}
-button{cursor:pointer;border:1px solid var(--line);background:var(--fill);border-radius:999px;padding:7px 14px;transition:background .2s,transform .1s}
-button:hover{background:var(--surface)}button:active{transform:scale(.97)}
+button{cursor:pointer;border:1px solid var(--line);background:var(--fill);border-radius:999px;padding:7px 14px}
+button:hover{background:var(--surface)}
 .pri{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--on);border-color:transparent;font-weight:600}
 .pri:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));filter:brightness(1.07)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -36,7 +29,7 @@ button:hover{background:var(--surface)}button:active{transform:scale(.97)}
 .tile{padding:14px 18px}.tile .n{font:700 30px/1.1 -apple-system,"SF Pro Display",Inter,system-ui,sans-serif;letter-spacing:-.03em}
 .tile .l{color:var(--muted);font-size:13px;margin-top:2px}.tile .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar{height:6px;border-radius:9px;background:var(--fill);overflow:hidden;margin-bottom:5px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:9px;transition:width .35s}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:9px}
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
 .seg{display:inline-flex;background:var(--fill);border-radius:999px;padding:3px;gap:2px}
 .seg button{border:0;background:transparent;padding:5px 13px}
@@ -86,6 +79,16 @@ textarea.field{min-height:38px;line-height:1.45}.title{font-weight:600}
 dialog{border:1px solid var(--edge);border-radius:20px;background:var(--glass);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);color:var(--ink);padding:14px;max-width:92vw}
 dialog::backdrop{background:rgba(0,0,0,.5)}dialog img{max-width:min(860px,86vw);max-height:78vh;display:block;border-radius:12px}
 .foot{color:var(--muted);font-size:12px;margin-top:14px}
+body{padding:28px 3vw}
+.win{max-width:1500px;margin:0 auto;border-radius:30px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,0) 170px),rgba(14,16,24,.46);-webkit-backdrop-filter:blur(20px) saturate(125%);backdrop-filter:blur(20px) saturate(125%);box-shadow:0 20px 70px rgba(0,0,0,.45);overflow:hidden}
+.win .wrap{padding:24px 28px 32px}
+.tbar{position:relative;display:flex;align-items:center;height:56px;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.14)}
+.dots{display:inline-flex;gap:8px}
+.dots i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25),inset 0 2px 2px rgba(255,255,255,.25)}
+.dots i:nth-child(1){background:#FF5F57}.dots i:nth-child(2){background:#FEBC2E}.dots i:nth-child(3){background:#28C840}
+.ttl{position:absolute;left:50%;transform:translateX(-50%);padding:5px 40px;border-radius:999px;background:rgba(255,255,255,.1);color:var(--muted);font-size:13px;white-space:nowrap}
+.login{position:relative}.login .dots{position:absolute;left:22px;top:22px}
+@media (max-width:700px){.ttl{display:none}body{padding:14px 10px}.win .wrap{padding:18px 14px 24px}}
 .files{display:flex;flex-direction:column;gap:6px;margin-top:6px;align-items:flex-start}
 .fl{display:flex;gap:4px;max-width:100%}
 .fb{max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:4px 10px;font-size:13px;border-radius:10px}
@@ -95,14 +98,15 @@ dialog::backdrop{background:rgba(0,0,0,.5)}dialog img{max-width:min(860px,86vw);
 .who{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:13px}
 .login{display:none;max-width:420px;margin:18vh auto 0;padding:32px;text-align:center}
 .login h2{margin:0;font:700 28px/1.2 -apple-system,"SF Pro Display",Inter,system-ui,sans-serif;letter-spacing:-.03em}
-body.out .login{display:block}body.out .wrap{display:none}
+body.out .login{display:block}body.out .win{display:none}
 </style>
 </head>
 <body class="out">
-<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="glass login" id="login"><h2>Conten Planner</h2><p class="sub">Masuk dengan Google supaya catatanmu sama di laptop, PC, dan iPhone.</p><button class="pri" id="gl" style="margin-top:18px">Masuk dengan Google</button><p class="foot" id="lerr"></p></div>
+<div class="bg" aria-hidden="true"></div>
+<div class="glass login" id="login"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><h2>Content Planner</h2><p class="sub">Masuk dengan Google supaya catatanmu sama di laptop, PC, dan iPhone.</p><button class="pri" id="gl" style="margin-top:18px">Masuk dengan Google</button><p class="foot" id="lerr"></p></div>
+<div class="win"><div class="tbar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ttl">Content Planner</span></div>
 <div class="wrap">
-  <div class="top"><h1>Conten Planner</h1><div class="who"><span id="em"></span><button id="lo">Keluar</button></div></div>
+  <div class="top"><h1>Content Planner</h1><div class="who"><span id="em"></span><button id="lo">Keluar</button></div></div>
   <p class="sub">Klik langsung di kolom untuk mengisi. Klik tombol tanggal 📅 untuk membuka kalender.</p>
   <section class="sum" id="sum"></section>
   <div class="tools">
@@ -124,6 +128,7 @@ body.out .login{display:block}body.out .wrap{display:none}
   </div>
   <div class="glass scroll" id="cal" hidden></div>
   <p class="foot" id="foot">Data tersimpan otomatis di browser ini. Pakai laptop dan browser yang sama, dan sesekali tekan Backup.</p>
+</div>
 </div>
 <input type="file" id="file" accept="image/*" multiple hidden>
 <input type="file" id="imp" accept=".json,application/json" hidden>
